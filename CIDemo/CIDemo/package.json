@@ -18,5 +18,9 @@
   "homepage": "https://github.com/dforbes49/CIDemo#readme",
   "dependencies": {
     "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-msbuild": "^0.2.21"
   }
 }

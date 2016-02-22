@@ -1,25 +1,18 @@
-﻿/*
-This file in the main entry point for defining Gulp tasks and using Gulp plugins.
-Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
-*/
+﻿/// <binding />
+var gulp = require("gulp");
+var msbuild = require("gulp-msbuild");
 
-var gulp = require('gulp');
-var msbuild = require('gulp-msbuild');
-
-gulp.task('default', function () {
-    // place code for your default task here
+gulp.task("default", function () {
+    return gulp.src('../CIDemo.sln')
+      .pipe(msbuild({
+          targets: ['Rebuild'],
+          toolsVersion: 14.0,
+          errorOnFail: true,
+          stdout: 'true',
+          verbosity: 'normal',
+          logCommand: true
+      })
+       );
 });
 
 
-
-gulp.task('build',  function () {
-    return gulp
-        .src('**/*.sln')
-        .pipe(msbuild({
-            toolsVersion: 14.0,
-            targets: ['Clean', 'Build'],
-            errorOnFail: true,
-            verbosity: 'detailed',
-            stdout: true
-        }));
-});
